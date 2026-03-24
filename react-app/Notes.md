@@ -143,7 +143,7 @@ Component State-
     In a input field - if u want to read the value
         - binding using state(useState) =>value , onChange ----> Controlled Input
         - refernce to the input (useRef) to the input and read ----> UnControlled Input
-
+    - be very careful using states , only for those props which require componnet rerender on change
 
 
 React Hooks -
@@ -205,6 +205,12 @@ src folder gets compiled
         - page router - for leagcy apps
             - src/pages
 
+    App Router APIs (anything with use is hooks)
+        usePathname()
+        useSearchParams()
+        useRouter() - next/navigation(app router)
+                    - next/router (page router)
+        useParams()
 
 <Hello message="test"/>
 <Hello message="test">Test</Hello>
@@ -222,9 +228,45 @@ function Hello({ message, children }){ //destructuring
 
 React Optimisation
     - components are granular (small components)
-    
+
+component which has to be rendered has to be export default component
 
 # React Hooks:-
     State Hooks
-    Effect Hooks
+    Effect Hooks - use to perform side-effects in functinal component.
+                    equivalent to 
+                 - hook into lifecycle
+                  - useeffect gets called after page is mounted
+                 - mount - called once on the componnet is mounted
+                         - dependency array is empty
+                         - Uasge - API Calls ,
+                                 - DOM Initilisation  
+                                 - Register to any event
+
+                - unmount - called once on the componnet is unmounted
+                        - cancel the api call
+                        - unregister to any events
+                 - we can have multiple useeffetc in one page.
+                 - dependecy array is neccesay so that My Effect doesnt runs after every re-render 
+
     Context Hooks
+
+# API Calls
+    - React does not provide in built library for API calls
+    - common libraries
+        - Axios
+        - fetch
+    Fetch is part of w3c specification and is supported by all modern browers
+    Axios open source library based on XMLHttpRequest  XHR object with lot of features.
+
+    # Axios
+        Promise based http client for browser
+        client side support for protecting against XSRF
+        intercept request response
+        cancel request
+
+# Component LifeCycle
+    Mount(once) -> Update -> UnMount(once)
+
+Read about spread opeartor-
+js spread operator - const arr1 = [...arr]
