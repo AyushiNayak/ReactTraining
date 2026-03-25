@@ -3,11 +3,13 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../../../models/product";
+import { useRouter } from "next/navigation";
 
 export default function EditProduct() {
  
     const params = useParams();
     const [product, setProduct] = useState<Product | null>(null);
+    const router = useRouter();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -31,6 +33,7 @@ export default function EditProduct() {
         
         try {
             await axios.put(`http://localhost:9000/products/${params.id}`, product);
+            router.push("/products");
             alert("Product updated successfully!");
         } catch (error) {
             console.error("Error updating product:", error);
@@ -103,9 +106,12 @@ export default function EditProduct() {
                         style={{ width: "100%", padding: "8px" }}
                     />
                 </div>
-
                 <button type="submit" className="btn btn-primary">
                     Update Product
+                </button>
+                <button style={{ marginLeft: "10px" }}
+                type="button" className="btn btn-secondary" onClick={() => router.back()}>
+                    Cancel
                 </button>
             </form>
         </div>

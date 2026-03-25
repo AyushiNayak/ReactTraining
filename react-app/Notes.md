@@ -248,6 +248,7 @@ component which has to be rendered has to be export default component
                         - unregister to any events
                  - we can have multiple useeffetc in one page.
                  - dependecy array is neccesay so that My Effect doesnt runs after every re-render 
+                 - we pass state in dependevy array, it will run on that state change
 
     Context Hooks
 
@@ -265,8 +266,101 @@ component which has to be rendered has to be export default component
         intercept request response
         cancel request
 
+        router.push
+        router.back()
+
 # Component LifeCycle
     Mount(once) -> Update -> UnMount(once)
 
 Read about spread opeartor-
 js spread operator - const arr1 = [...arr]
+
+
+# More react hooks-
+    React Optimisation
+        - components are granular small
+        - memoization 
+            - like caching
+            React.memo(this is for a component)
+            component re-renders only if props or state change
+            by default after react 19 , child components are memoised
+           - if we want to specific memoisation - export const ProductView: React.FC<ProductViewProps> = React.memo(({ product }) => {
+           - techniacally when parent renders - child should rerender but in productview its not happening , but since reactCompiler was true memomisation was happening , if we do it false it will rerender again.
+            - till the time we are paasing only props from parent to child , mmeoisation works
+            when we added local fucnions edit and delete , these fucntions will get recreated(there memory address change) on componnets render even on memoisation
+            so component gets rerdenerd
+            - now if we want to resolve this we have a hook called **Callback , so that even if parent component get rerender
+            child componnet wont get rendered , till the time theer is no change on these functions.
+
+            exmaple - 
+                        const editProduct = useCallback(async (id: number) => {
+                            console.log("Edit product with id:", id);
+                            router.push(`/products/${id}`);
+                            
+                        },[products]);
+
+for passing parent to child - props
+for passing child to parent - fn callbacks
+
+        - Memo Hooks
+            - like how we have usecallback memo for callback fns in componet 
+            we have useMemo for normal fns in componnet 
+
+            example - 
+            
+                    const calculateTotalCost = useMemo(() => {
+                        console.log("Calculating total cost for products:");
+                        return products.reduce((total, product) => total + product.price, 0);
+                    }, [products]);
+
+        - ref hooks
+        - custom hooks
+            are meant to provide reusable component wise logic
+            a function 
+            user other hooks
+        WHEN WE USE USEEFFECT , IN UNMOUNT WE NEED TO UNREGSITESR APIS 
+            const  controller = new AbortController();
+            const response = await axios.get<Product[]>("http://localhost:9000/products", { signal: controller.signal });
+
+## State Management
+    state sharing b/w 2 components
+    - React Context - available from react 16.3
+    - React Redux - 
+    - MOb
+    - Rxjs
+
+    ### Local UI State - show hide ui , handled by component
+    ### Persistent state - orders/blogs - stored in db
+    ### Client State - iAuthenticated , Filter Info - Managed by redux or react context
+
+    Session State(in browser)
+        -LocalStorage & SessionStorage
+        -Cookies
+        - In Memory
+
+### Redux-
+                Global State
+               App
+                !
+          Users         Customers
+            !               !
+           ---              ---
+           !  !             !  !
+        Auth   Dashboard   list edit
+
+        In REdux flow - we have a central Store
+        In redux - actions is an object with a type and a payload
+                -{type:"save_token",token:"abc"}
+                -{type:"clear_token"}
+
+                - REducer is a function (receives actions & updates store) - central store updated
+     componet -    Dispatch an Action ---- recieved by an Reducer --- updates central store -- triggers - subscription -- pass update state to componnet
+
+     react redux to intregarte to redux.
+        -comprises of components & function
+        - Providers:components to integrate the store with react application
+        - Hooks
+            - useDispatch: returns dispatach method
+            - useStore: return a refernce to store
+            - useSelector: return a subset(of the state) in redux and subscribe to store.
+

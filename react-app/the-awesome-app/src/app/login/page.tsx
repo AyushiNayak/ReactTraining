@@ -3,7 +3,8 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { SubmitEvent, useState , useEffect, useRef} from "react";
-
+import { useTitle } from "../../hooks/useTitle";
+import { useDispatch, UseDispatch } from "react-redux";
 export default function Login() {
 
     const [username, setUsername] = useState("");
@@ -12,7 +13,9 @@ export default function Login() {
     const router = useRouter();
     const userNameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
-
+    const dispatch = useDispatch();
+    useTitle("Login Page");
+    
  console.log("Login Rendered");
     //This use effect is invoked once on component mount.
 
@@ -35,9 +38,11 @@ export default function Login() {
         setMessage("");
        try {
         const response = await axios.post("http://localhost:9000/login", { name: username, password })
-        console.log(response.data);
+        ;
+        dispatch({ type: "LOGIN", payload: {...response.data, isAuthenticated: true, userName: username } });
         router.push("/");
       } catch (error) {
+        dispatch({ type: "LOGOUT", payload: { isAuthenticated: false, userName: "" } });
         console.error("Login error:", error);
         setMessage("Invalid username or password.");
 
