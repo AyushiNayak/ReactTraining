@@ -44,7 +44,7 @@ export default function Login() {
       } catch (error) {
         dispatch({ type: "LOGOUT", payload: { isAuthenticated: false, userName: "" } });
         console.error("Login error:", error);
-        setMessage("Invalid username or password.");
+        setMessage("Invalid username or password."); 
 
         }
     }

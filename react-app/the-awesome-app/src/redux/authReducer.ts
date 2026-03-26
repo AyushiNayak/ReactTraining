@@ -15,7 +15,7 @@ const initialAuthState: AuthState = {
 };
 
 export type AuthAction =
-    | { type: "LOGIN"; payload: { userName: string; accessToken: string; refreshToken: string; isAuthenticated: boolean } }
+    | { type: "LOGIN"; payload: AuthState }
     | { type: "LOGOUT" };
 
 //login {type: "LOGIN", payload: {userName, accessToken, refreshToken,isAuthenticated}}

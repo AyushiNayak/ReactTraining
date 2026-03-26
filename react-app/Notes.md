@@ -354,9 +354,10 @@ for passing child to parent - fn callbacks
                 -{type:"clear_token"}
 
                 - REducer is a function (receives actions & updates store) - central store updated
+                - always synchronous(cannot make an api call or other async task)
      componet -    Dispatch an Action ---- recieved by an Reducer --- updates central store -- triggers - subscription -- pass update state to componnet
 
-     react redux to intregarte to redux.
+     1.react redux to intregarte to redux.
         -comprises of components & function
         - Providers:components to integrate the store with react application
         - Hooks
@@ -364,3 +365,44 @@ for passing child to parent - fn callbacks
             - useStore: return a refernce to store
             - useSelector: return a subset(of the state) in redux and subscribe to store.
 
+    2. Redux Toolkit 
+        - implemennt of redux patterns
+        - opiononted framework
+        - slices => alternative to reducers
+            - treat state as mutable
+            - generates the reducer code(we would still have reducer slices take care of that)
+            - geneartes action creators (action creators are helper fn to crate a action)
+    3. Other State Managemnet Libraries:
+        - react context
+        - Zustand(recent , its very light weight)
+        - MobX
+
+  React context
+    *context provides a way to pass data thro componnet tree without need to pass props down manullly at every level.
+    * example of property to be passed down
+        - theme
+        - locale
+        - authenticated user
+    API - React.createContext()
+    - state management
+    - React 16.3
+    - compared to redux
+        - low level api (app need manage state)
+        - there can be multiple contexts vs in redux a single store
+
+
+### Redux Middleware
+    after we dispatch the action , redux middleware intercepts and then fwds to reducer
+    since reducers cant do api calls  we use redux middleware
+    libraries
+    - redux thunk
+    - redux saga
+    - redux logger
+
+    for persisting data in redux in browser storage, library is there redux-persist
+### Client Components
+    rendereed and hydrated in the browser
+
+### Server Components
+    rendered on server with no client-side js.
+    available on 

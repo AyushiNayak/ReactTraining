@@ -1,10 +1,19 @@
+'use client';
+import { AppThemeContext } from "@/context/AppThemeContext";
 import Link from "next/link";
+import { useContext } from "react";
 
 export default function AppBar() {
-    return (
-        <nav className="navbar navbar-dark bg-dark">
+
+  const theme = useContext(AppThemeContext);
+  function toggleTheme() {
+    theme.changeMode(theme.mode === "light" ? "dark" : "light");
+  }
+
+  return (
+        <nav className={`navbar navbar-dark bg-${theme.mode}`}>
   <div className="container-fluid">
-    <Link className="navbar-brand" href="/">Next.js</Link>
+    <Link className="nav-link" href="/">Next.js</Link>
     <ul className="nav">
   <li className="nav-item">
     <Link className="nav-link active" aria-current="page" href="/">Home</Link>
@@ -20,6 +29,12 @@ export default function AppBar() {
   </li>
    <li className="nav-item">
     <Link className="nav-link" href="/gadgets">Gadgets</Link>
+  </li>
+   <li className="nav-item">
+    <Link className="nav-link" href="/view-cart">View Cart</Link>
+  </li>
+  <li className="nav-item">
+   <button className="btn btn-sm btn-warning" onClick={toggleTheme}>Toggle Theme</button>
   </li>
  
 </ul>

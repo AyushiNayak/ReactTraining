@@ -1,6 +1,7 @@
 import { authReducer } from "./authReducer";
 import {configureStore,combineReducers} from "@reduxjs/toolkit";
 import { gadgetsReducer } from "./gadgetsReducer";
+import { createStore } from "redux";
 
 
 

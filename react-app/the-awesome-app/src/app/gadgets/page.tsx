@@ -1,19 +1,23 @@
 'use client'
 import { Product } from '@/models/product';
 import { useProduct } from '@/hooks/useProduct';
+import { useDispatch } from 'react-redux';
+import {addToCart as addToStore} from "@/redux/gadgetsReducer";
 
 
 
 function GadgetStore(){
 
     const {products} = useProduct();
+    const dispatch = useDispatch();
     
     
     
     
 
     function addToCart(product: Product): void {
-        
+        const action = addToStore({ product , quantity: 1 });
+        dispatch(action);
     }
 
     function renderProducts() {
