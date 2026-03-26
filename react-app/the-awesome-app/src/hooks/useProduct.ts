@@ -25,8 +25,10 @@ const router = useRouter();
             return;
         }
     try {   
+            const url = `${process.env.NEXT_PUBLIC_BASE_URL}/secure_products`;
+
         const header = { Authorization: `Bearer ${auth.accessToken}` };
-        const response = await axios.get<Product[]>("http://localhost:9000/secure_products", { signal: controller.signal, headers: header });
+        const response = await axios.get<Product[]>(url, { signal: controller.signal, headers: header });
         setProducts(response.data);
         console.log(response.data);
     } catch (error) {

@@ -400,9 +400,82 @@ for passing child to parent - fn callbacks
     - redux logger
 
     for persisting data in redux in browser storage, library is there redux-persist
+
+### LAZY LOADING 
+In nestjs or vite , lazy loading is already in built ,chunks gets fetched when we navigate to that component
+IN CRA WE NEED TO TAKE CARE
+
 ### Client Components
     rendereed and hydrated in the browser
+    REBN
 
 ### Server Components
     rendered on server with no client-side js.
     available on 
+    NO INTERACTIVITY WITH BROWSER FOR SERVER SIDE COMPONENT
+    AVAILABLE FROM NEXT JS 13
+    CANNOT USE CLIENT SIDE HOOKS LIKE USE EFFECT ETC
+    GRAET FOR STATIC CONTENT NOT INTERATRCIVE ui
+    NO JS IS SENT TO CLIENT RESULTING IN BETTER PEROFORMACE
+    WORK ALONG WITH SIDE CLIENT SIDE COMPONENTS
+    BETTER PERF
+    DATA FETCHING
+    RENDERING HEAVY uiS
+    CACHING
+
+    Limitations-
+        No Interactivity
+        LImited access to browser apis(window , localstorage etc)
+
+export const metadata: Metadata = {
+  title: "Awesome App:Customers",
+  description: "Listed of customers",
+  keywords:["global customers,tech companies,fortune 500"]
+}; we give keywords , for SEO
+
+
+### Server Side Rendering
+
+
+
+### Static Site Generation
+   pre rendering method pages are genearted at build time
+   ssg is fast prebuilt static html with minimal server side processing
+   content is static doesnt change with each request.
+
+### SSR in App router
+    -if componnet inclused asycnhronous data fetching or dynmaic data is fetched on every request
+    This ensures fresh data is rendered for every request
+    - caching is diabled on fetch apis
+    - use any dynamic APIs
+        cookies header connecion
+    Forec enable SSR
+     to make ssg - 
+     export const dynamic = 'force-dynamic'
+    const contentTypeHeader = (await headers()).get("Content-Type") || "application/json";
+put no cache
+    If none of this is met it becomes SSG
+
+### Incremental Static REGeneration(ISR)
+    -ISR allows u to update static pages after they have been built without needing to rebuild
+    -Like SSG ISR builds initial HTML at  build
+    - these file are served to users with pre fetched data making site fats
+    - with isr u can speccify revaliate time , so that component gets refetched in the background for next request.
+
+### Suspense and Streaming for srever components
+    - Suspense in react allows to handle async operations(like data fetching) by provding mechanihsm to pause rednering till data is
+    available
+    - it lets u display a fallback UI while waiting for async tasks.
+    - when a componnet is wrapped in <suspense> , react can "suspend" rendering until data or resource required by componnet
+    is fullly loaded.
+
+### Parallel Fetch in server components
+
+### NextJs backend API
+    Nest js is a full stack framework
+    API Routes: TRADITIONAL WAY USING PAGE ROUTER
+    rOUTE hANDLERS:
+        Route handlers are used to define API endpoints using app router
+        serverless arch
+        route handler live in app/api directory
+    sERVER aCTIONS:
