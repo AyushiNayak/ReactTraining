@@ -536,5 +536,24 @@ const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 next/dynmiac - for nextjs
 
+###  Micro Frontends
+    Webpack MFE
+        Vite (bundler - rollup)
+        Nextjs(Turbopack)
 
 
+#### In Next.js Multizones
+    - feature in next.js allows to compose multiple Next.js applications into a single site
+    with different "zones" running as sepearte Next.js app
+    - cons-
+        sharing data is not possible (redux doesnt work)
+        sharing of libraries wont work
+    Multi-Zones: This is the "Next.js way" of doing MFEs. It allows you to route different sub-paths (e.g., /shop and /blog) to entirely separate Next.js applications.
+
+    Multi-Zones is designed for "Stitching" separate websites together at the URL level (e.g., your Shop is one app, your Blog is another). Because moving between zones triggers a hard browser refresh, your React state (search input, active nav highlights, user sessions) will reset every time the user clicks a link.
+
+
+        https://github.com/aniljos/Nextjs-multizones
+        https://github.com/AyushiNayak/ReactTraining/blob/main/react-app/Notes.md
+        https://github.com/aniljos/react-nextjs-march-2026/blob/main/class-notes.txt
+        https://github.com/aniljos/REST-API-Mock
