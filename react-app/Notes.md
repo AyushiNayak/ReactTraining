@@ -557,3 +557,12 @@ next/dynmiac - for nextjs
         https://github.com/AyushiNayak/ReactTraining/blob/main/react-app/Notes.md
         https://github.com/aniljos/react-nextjs-march-2026/blob/main/class-notes.txt
         https://github.com/aniljos/REST-API-Mock
+
+### Deployment for nextjs
+    for purely client application-
+        it can be deployed on any web server 
+    for apps which have both component
+        Vercel 
+        Netify
+        AWS
+        Other Platforms 
