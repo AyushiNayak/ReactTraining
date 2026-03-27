@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Application</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.3/babel.min.js" integrity="sha512-NyQU9Gq/x36ldUUB9k8SEVCUUIJYxFjtwa7Ndz5h6noqqcSGx3nnmdK26bXiVWlo8ZU147EyJlydvFQEF97I/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="app1">React Application</div>
+    <div id = "app2"></div>
+    <div id = "app3"></div>
+    <div id = "app4"></div>
+        <div id = "app5"></div>
+
+    <script type="text/babel">
+    // create a 
+    const element = React.createElement('div', { id: 'myDiv' }, 'Hello, React!');
+    ReactDOM.createRoot(document.getElementById('app2')).render(element);
+    const element1 = React.createElement('div', { id: 'myDiv' }, React.createElement('h4', null, 'Hello, React Friends!'));
+    ReactDOM.createRoot(document.getElementById('app3')).render(element1);
+    ReactDOM.createRoot(document.getElementById('app4')).render(<div><h4>This is JSX</h4></div>);
+
+
+        //COMPONENTS: FUNCTION/CLASS
+
+        function MYCOMPONENT() {
+            return <h1>Hello, I am a React Component!</h1>;
+        }
+
+        ReactDOM.createRoot(document.getElementById('app5')).render(<MYCOMPONENT />);
+
+
+    </script>
+
+</body>
+</html>
