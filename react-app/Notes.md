@@ -521,5 +521,20 @@ Reconciliation-
     on next rdner update it will return a diff tree
     react then figures out how to efficiently update UI to match most recent tree
 
-#### Vite
+# Vite
+ routing diff
+ no serever side componnet
+ diff folder strcuryre
+ diff build tool
+
+
+ ## Code Splitting
+    allows app to split into seperate bundles so that it can be lazily loaded
+
+    In react React.lazy
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+next/dynmiac - for nextjs
+
+
 
