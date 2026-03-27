@@ -479,3 +479,19 @@ put no cache
         serverless arch
         route handler live in app/api directory
     sERVER aCTIONS:
+
+**Next Js supports both server and client side API calls
+
+### Server Actions
+    run on serevr , allows data fetching , db calls etc
+    Server Actions are functions that run on the server, allowing React and Next.js applications to handle data fetching, mutations, and other server-side operations directly from components.
+can return HTMLs from server side (hello.tsx)
+    
+
+### Route Hanlders vs Server Actions
+
+Hooks - useEffectEvent
+useReducer- similar to useState (dispatch actions , to reducer which updates state in store)
+useDeferredValue , similar to debounce in angular
+useActionState
+useImperativeHandler- is a React Hook that lets you customize the handle exposed as a ref.

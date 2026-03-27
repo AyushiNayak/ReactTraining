@@ -1,6 +1,6 @@
 // counter initilsation <Counter count={5} />
 'use client'; 
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useEffectEvent, useRef, useState } from "react";
 
 type CounterProps = {
     count: number;
@@ -9,6 +9,24 @@ type CounterProps = {
 export default function Counter(props: CounterProps) {
     const [count, setCount] = useState(props.count);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    const clickCount = useRef(0);
+
+
+    const temp = useEffectEvent(() => {
+        console.log("countyy",count)
+
+    });
+        useEffect(() => {
+      
+            const t = setInterval(()=>{
+                temp()
+            },5000)
+
+            return()=>{
+                clearInterval(t)
+            }
+    });
     useEffect(() => {
         console.log("Count updated:", count);
     },[count]);
@@ -17,7 +35,8 @@ function increment() {
     setCount((prevCount) => prevCount + 5);
     setCount((prevCount) => prevCount + 5);
     console.log("Count after increment",count);
-
+      clickCount.current++;
+      console.log("click count",clickCount)
 }
 
 function decrement() {
