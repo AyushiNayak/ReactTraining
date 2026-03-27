@@ -490,8 +490,36 @@ can return HTMLs from server side (hello.tsx)
 
 ### Route Hanlders vs Server Actions
 
-Hooks - useEffectEvent
-useReducer- similar to useState (dispatch actions , to reducer which updates state in store)
-useDeferredValue , similar to debounce in angular
-useActionState
-useImperativeHandler- is a React Hook that lets you customize the handle exposed as a ref.
+
+### Other Hooks
+    Hooks - useEffectEvent
+    useReducer- similar to useState (dispatch actions , to reducer which updates state in store)
+    useDeferredValue , similar to debounce in angular
+    useActionState
+    useImperativeHandler- is a React Hook that lets you customize the handle exposed as a ref.
+        used in case when we make custom component and we need to make use of some red of that common component
+
+### Other componets
+
+    ## Fragment-
+    for jsx we need a parent always
+    so we can have a empty tag
+    <>
+    <OneChild />
+    <AnotherChild />
+    </> so we dont see this in actual DOM
+
+    ## Activity used for show and hide UI-https://react.dev/reference/react/Activity
+
+### Virtual DOM
+
+virtual represenation of UI kept in memory
+synced with real DOM , process called reconciliation
+
+Reconciliation-
+    when render fn gets called it creates a tree of react elements
+    on next rdner update it will return a diff tree
+    react then figures out how to efficiently update UI to match most recent tree
+
+#### Vite
+
